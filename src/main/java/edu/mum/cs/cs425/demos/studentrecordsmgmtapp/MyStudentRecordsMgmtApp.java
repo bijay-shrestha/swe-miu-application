@@ -51,8 +51,7 @@ public class MyStudentRecordsMgmtApp{
 
     static void printHelloWorld(List<Integer> numbers) {
         int index = 0;
-        for (Integer number :
-                numbers) {
+        for (Integer number : numbers) {
             if (number % 5 == 0 && number % 7 == 0) {
                 out.println("HelloWorld: " + number + " index: " + index);
             } else if( number%5 == 0){
@@ -65,6 +64,20 @@ public class MyStudentRecordsMgmtApp{
     }
 
     static Integer findSecondBiggest(Integer[] numbers, int total){
+        int temp;
+        for (int i = 0; i < total; i++) {
+            for (int j = i + 1; j < total; j++) {
+                if (numbers[i] > numbers[j]) {
+                    temp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = temp;
+                }
+            }
+        }
+        return numbers[total-2];
+    }
+
+    static Integer findSecondBiggestWithSorting(Integer[] numbers, int total){
         List<Integer> numberList= Arrays.asList(numbers);
         Collections.sort(numberList);
         return numberList.get(total-2);
